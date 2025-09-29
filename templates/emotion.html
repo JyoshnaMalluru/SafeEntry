@@ -100,20 +100,7 @@
   <div class="container">
     <h2>Identify the emotion of the person below</h2>
     <img src="/static/emotions/{{ image }}" alt="Face for emotion CAPTCHA">
-
-    <!-- Login Form -->
-    <form id="login-form">
-      <input type="text" id="login-username" placeholder="Username" required>
-      <input type="password" id="login-password" placeholder="Password" required>
-    </form>
-
-    <!-- Signup Form -->
-    <form id="signup-form" style="display: none;">
-      <input type="text" id="signup-username" placeholder="Username" required>
-      <input type="email" id="signup-email" placeholder="Email" required>
-      <input type="password" id="signup-password" placeholder="Password" required>
-    </form>
-<br>
+    
     <!-- Emotion CAPTCHA Form -->
     <form id="emoForm" action="/emotion/submit" method="POST">
       <input type="hidden" name="label" value="{{ label }}">
@@ -125,3 +112,5 @@
   </div>
 </body>
 </html>
+
+

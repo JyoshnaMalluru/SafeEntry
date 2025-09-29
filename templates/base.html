@@ -132,6 +132,24 @@
       header.hero h1 { font-size: 1.8rem; }
       .media { height: 150px; }
     }
+   .logout-container {
+        display: flex;
+        justify-content: flex-end; /* pushes button to the right */
+        margin-bottom: 10px; /* optional spacing */
+    }
+
+    .btn.logout {
+        padding: 10px 15px;
+        border: 1px solid #ddd;
+        border-radius: 8px;
+        background-color: #f1f1f1;
+        cursor: pointer;
+    }
+
+    .btn.logout:hover {
+        background-color: #e0e0e0;
+    }
+
   </style>
 </head>
 <body>
@@ -143,6 +161,12 @@
 
 <main>
   <!-- Hacks Section -->
+   <div class="logout-container">
+      <form action="{{ url_for('logout') }}" method="get">
+          <button type="submit" class="btn logout">Logout</button>
+      </form>
+  </div>
+
   <section>
     <h2 class="section-title">How Attackers Exploit Traditional CAPTCHAs</h2>
     <div class="grid">

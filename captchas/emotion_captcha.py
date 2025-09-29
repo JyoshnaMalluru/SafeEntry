@@ -26,3 +26,4 @@ def log(t,label,choice,correct):
         w.writerow([t,label,choice,int(correct)])
     return render_template("base.html",correct=correct)
 
+

@@ -3,3 +3,5 @@ itsdangerous>=2.1
 Werkzeug>=2.3
 Jinja2>=3.1
 MarkupSafe>=2.1
+mysql-connector-python
+Flask-MySQLdb
