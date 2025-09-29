@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Logic Story CAPTCHA</title>
+<style>
+  /* ===== Base ===== */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #f7f8fa;
+    color: #222;
+    display: flex;
+    justify-content: center;
+    padding: 30px 15px;
+  }
+
+  .container {
+    background: #fff;
+    max-width: 500px;
+    width: 100%;
+    padding: 30px 25px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  img {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 15px;
+    border-radius: 12px;
+    border: 1px solid #e0e0e0;
+    background: #f0f0f0;
+  }
+
+  p {
+    font-weight: 600;
+    margin-bottom: 20px;
+    color: #444;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 15px;
+  }
+
+  input[type="text"], input[type="password"], input[type="email"] {
+    padding: 12px 14px;
+    border: 1px solid #dcdcdc;
+    border-radius: 10px;
+    font-size: 1rem;
+    background: #fafafa;
+    outline: none;
+    transition: border 0.2s, background 0.2s;
+  }
+
+  input:focus {
+    border-color: #b5b5b5;
+    background: #fff;
+  }
+
+  button {
+    padding: 12px;
+    background: #f5f5f5;
+    color: #222;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  button:hover { background: #e9e9e9; }
+
+  #result {
+    margin-top: 15px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    min-height: 24px;
+    color: #444;
+  }
+
+  /* Responsive */
+  @media (max-width: 480px) {
+    body { padding: 20px; }
+    h2 { font-size: 1.2rem; }
+    input, button { font-size: 0.95rem; padding: 10px 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+    <h2>SignUp/Login</h2>
+    <br>
+    <!-- Login Form -->
+    <form id="login-form">
+      <input type="text" id="login-username" placeholder="Username" required>
+      <input type="password" id="login-password" placeholder="Password" required>
+    </form>
+
+    <!-- Signup Form -->
+    <form id="signup-form" style="display: none;">
+      <input type="text" id="signup-username" placeholder="Username" required>
+      <input type="email" id="signup-email" placeholder="Email" required>
+      <input type="password" id="signup-password" placeholder="Password" required>
+    </form>
+
+    <h2>Look at the story image and answer the question</h2>
+    <img src="{{ url_for('static', filename=image) }}" alt="Logic Story">
+    <p><b>{{ question }}</b></p>
+
+    <form id="story-form" method="POST" action="/logic_story/submit">
+        <input type="hidden" name="correct" value="{{ answer }}">
+        <input type="text" name="answer" placeholder="Your answer" required>
+        <button type="submit">Submit</button>
+    </form>
+
+    <div id="result"></div>
+</div>
+</body>
+</html>

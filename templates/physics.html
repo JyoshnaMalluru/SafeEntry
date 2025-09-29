@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Physics CAPTCHA</title>
+<style>
+  body {
+    font-family: "Segoe UI", Arial, sans-serif;
+    background: #eaf7ff;
+    display: flex;
+    justify-content: center;
+    padding: 30px 15px;
+  }
+
+  .container {
+    background: #fff;
+    max-width: 500px;
+    width: 100%;
+    padding: 30px 25px;
+    border-radius: 16px;
+    box-shadow: 0 6px 18px rgba(0,0,0,0.06);
+    text-align: center;
+  }
+
+  h2 {
+    font-size: 1.4rem;
+    margin-bottom: 20px;
+    color: #333;
+  }
+
+  form {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-bottom: 20px;
+  }
+
+  input[type="text"], input[type="password"], input[type="email"] {
+    padding: 12px 14px;
+    border-radius: 10px;
+    font-size: 1rem;
+    outline: none;
+    border: 1px solid #dcdcdc;
+    background: #fafafa;
+    transition: border 0.2s, background 0.2s;
+  }
+
+  input:focus {
+    border-color: #b5b5b5;
+    background: #fff;
+  }
+
+  button {
+    padding: 12px;
+    background: #f5f5f5;
+    color: #222;
+    font-size: 1rem;
+    border: none;
+    border-radius: 10px;
+    cursor: pointer;
+    transition: background 0.2s;
+  }
+
+  button:hover { background: #e9e9e9; }
+
+  #result {
+    margin-top: 20px;
+    font-weight: 600;
+    font-size: 1.1rem;
+    min-height: 24px;
+    color: #444;
+  }
+
+  /* Slider container */
+  .slider-container {
+    position: relative;
+    width: 100%;
+    margin: 20px auto;
+    height: 30px; /* enough to hold slider and marker */
+  }
+
+  #slider {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+  }
+
+  #target-marker {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%); /* vertically center on slider track */
+    width: 2px;
+    height: 20px;
+    background: red;
+    pointer-events: none; /* so slider is still draggable */
+  }
+
+  @media (max-width: 480px) {
+    body { padding: 20px; }
+    h2 { font-size: 1.2rem; }
+    input, button { font-size: 0.95rem; padding: 10px 12px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+  <h2>SignUp/Login</h2>
+
+  <!-- Login Form -->
+  <form id="login-form">
+    <input type="text" id="login-username" placeholder="Username" required>
+    <input type="password" id="login-password" placeholder="Password" required>
+  </form>
+
+  <!-- Signup Form -->
+  <form id="signup-form" style="display: none;">
+    <input type="text" id="signup-username" placeholder="Username" required>
+    <input type="email" id="signup-email" placeholder="Email" required>
+    <input type="password" id="signup-password" placeholder="Password" required>
+  </form>
+
+  <h2>Drag the slider to stop the falling block at the right spot</h2>
+  <p>Target position: <b id="target">{{ target }}</b></p>
+
+  <form method="POST" action="/physics/submit">
+    <div class="slider-container">
+      <div id="target-marker"></div>
+      <input type="range" id="slider" min="0" max="400" value="0">
+    </div>
+    <button type="submit">Submit</button>
+  </form>
+
+  <div id="result"></div>
+</div>
+
+<script>
+function updateMarker() {
+  const slider = document.getElementById('slider');
+  const marker = document.getElementById('target-marker');
+  const target = parseFloat(document.getElementById('target').textContent);
+  const min = parseFloat(slider.min);
+  const max = parseFloat(slider.max);
+
+  const percent = (target - min) / (max - min);
+  marker.style.left = `calc(${percent * 100}% - 1px)`; // center marker on slider track
+}
+
+window.onload = updateMarker;
+window.onresize = updateMarker;
+
+function submitDrag(){
+  const fd = new FormData();
+  fd.append('pos', document.getElementById('slider').value);
+  fetch('/physics/submit', {method:'POST', body: fd})
+    .then(r => r.json())
+    .then(j => {
+      document.getElementById('result').textContent = j.correct ? '✅ Correct!' : '❌ Wrong!';
+    });
+}
+</script>
+</body>
+</html>

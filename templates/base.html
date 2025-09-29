@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width,initial-scale=1" />
+  <title>Anti-AI CAPTCHA — Protecting Your Data</title>
+
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+
+  <style>
+    * { box-sizing: border-box; }
+    html, body { height: 100%; margin: 0; padding: 0; }
+    body {
+      font-family: "Poppins", system-ui, sans-serif;
+      background: #f7f8fb;
+      color: #2b2b2b;
+      line-height: 1.6;
+    }
+    a { color: #0b6ef6; text-decoration: none; }
+
+    header.hero {
+      background:
+        linear-gradient(180deg, rgba(5,15,85,0.65), rgba(5,15,85,0.52)),
+        url("https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1600&q=80")
+        center/cover no-repeat;
+      color: #fff;
+      padding: 80px 20px;
+      text-align: center;
+    }
+    header.hero h1 {
+      font-size: 2.4rem;
+      margin-bottom: 12px;
+      font-weight: 600;
+    }
+    header.hero p {
+      max-width: 900px;
+      margin: 0 auto;
+      font-size: 1.1rem;
+      opacity: 0.95;
+    }
+
+    main {
+      max-width: 1160px;
+      margin: 40px auto;
+      padding: 0 18px 80px;
+    }
+    .section-title {
+      text-align: center;
+      font-size: 1.7rem;
+      margin: 40px 0 20px;
+      color: #111;
+      font-weight: 600;
+    }
+
+    .grid {
+      display: grid;
+      gap: 22px;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      grid-auto-rows: minmax(0, 1fr);
+      align-items: stretch;
+    }
+    .card {
+      background: #fff;
+      border-radius: 12px;
+      overflow: hidden;
+      box-shadow: 0 8px 20px rgba(14,22,50,0.06);
+      display: flex;
+      flex-direction: column;
+      height: 100%;
+      transition: transform .2s ease, box-shadow .2s ease;
+    }
+    .card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 14px 30px rgba(14,22,50,0.1);
+    }
+    .media {
+      height: 200px;
+      flex: 0 0 200px;
+      overflow: hidden;
+      background: #f0f2f6;
+    }
+    .media img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      display: block;
+    }
+    .card-body {
+      padding: 18px;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      flex: 1 1 auto;
+    }
+    .card h3 { margin: 0; font-size: 1.15rem; color: #0b6ef6; }
+    .card p { margin: 0; color: #4a5460; }
+
+    .cta {
+      margin: 60px auto 0;
+      background: linear-gradient(90deg, #0b6ef6, #0066ff);
+      color: #fff;
+      padding: 40px 22px;
+      border-radius: 14px;
+      text-align: center;
+      box-shadow: 0 12px 30px rgba(11,110,246,0.18);
+      max-width: 960px;
+    }
+    .cta h2 { margin: 0 0 10px; font-size: 1.5rem; }
+    .cta p { margin: 0 0 18px; color: rgba(255,255,255,0.95); }
+    .btn {
+      display: inline-block;
+      background: #fff;
+      color: #0b6ef6;
+      padding: 12px 26px;
+      border-radius: 999px;
+      font-weight: 600;
+      box-shadow: 0 6px 18px rgba(11,110,246,0.12);
+      transition: background .2s;
+    }
+    .btn:hover { background: #f5f7ff; }
+
+    footer {
+      background: #222;
+      color: #aaa;
+      padding: 30px 20px;
+      text-align: center;
+      font-size: 0.9rem;
+    }
+
+    @media (max-width:640px) {
+      header.hero { padding: 44px 14px; }
+      header.hero h1 { font-size: 1.8rem; }
+      .media { height: 150px; }
+    }
+  </style>
+</head>
+<body>
+
+<header class="hero">
+  <h1>Anti-AI CAPTCHA — Safeguarding Your Data</h1>
+  <p>Discover how bots break old CAPTCHAs, how your data is at risk, and how Anti-AI defenses stop them.</p>
+</header>
+
+<main>
+  <!-- Hacks Section -->
+  <section>
+    <h2 class="section-title">How Attackers Exploit Traditional CAPTCHAs</h2>
+    <div class="grid">
+      <a class="card" target="_blank">
+        <div class="media">
+          <img src="https://images.unsplash.com/photo-1605902711622-cfb43c44367f?auto=format&fit=crop&w=1200&q=80"
+               alt="AI solver"
+               onerror="this.onerror=null;this.src='/static/base_images/captcha.webp';">
+        </div>
+        <div class="card-body">
+          <h3>AI Solver Advances</h3>
+          <p>Machine learning can now break CAPTCHAs that rely on distorted text or simple images. (See research)</p>
+        </div>
+      </a>
+
+      <a class="card" target="_blank">
+        <div class="media">
+          <img src="https://images.unsplash.com/photo-1591696331113-f9f15b7183f2?auto=format&fit=crop&w=1200&q=80"
+               alt="Credential stuffing"
+               onerror="this.onerror=null;this.src='/static/base_images/credentials.jpg';">
+        </div>
+        <div class="card-body">
+          <h3>Credential Stuffing</h3>
+          <p>Bots use stolen credentials to flood login forms. Weak CAPTCHAs often fail to stop them.</p>
+        </div>
+      </a>
+
+      <a class="card" target="_blank">
+        <div class="media">
+          <img src="https://images.unsplash.com/photo-1502880195258-4f5b6f6b88e4?auto=format&fit=crop&w=1200&q=80"
+               alt="Data scraping"
+               onerror="this.onerror=null;this.src='/static/base_images/data_harvesting.png';">
+        </div>
+        <div class="card-body">
+          <h3>Data Harvesting & Scraping</h3>
+          <p>Automated bots scrape contact info, pricing, and content, harming privacy and intellectual property.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <section>
+    <h2 class="section-title">How Anti-AI Captchas Defend Your Site</h2>
+    <div class="grid">
+      <a class="card" target="_blank">
+        <div class="media">
+          <img src="https://images.unsplash.com/photo-1581091870633-7b9b8e1f1c17?auto=format&fit=crop&w=1200&q=80"
+               alt="Interactive puzzles"
+               onerror="this.onerror=null;this.src='/static/base_images/interactive.jpg';">
+        </div>
+        <div class="card-body">
+          <h3>Dynamic & Interactive Challenges</h3>
+          <p>Tasks change continuously — tracing, dragging, reasoning — making it hard for bots to generalize.</p>
+        </div>
+      </a>
+
+      <a class="card" target="_blank">
+        <div class="media">
+          <img src="https://images.unsplash.com/photo-1504384308090-c894fdcc538d?auto=format&fit=crop&w=1200&q=80"
+               alt="Human centric"
+               onerror="this.onerror=null;this.src='/static/base_images/credentials.jpg';">
+        </div>
+        <div class="card-body">
+          <h3>User-Centric Experience</h3>
+          <p>Designed to be intuitive and fast for humans, but unpredictable and expensive for bots.</p>
+        </div>
+      </a>
+
+      <a class="card" target="_blank">
+        <div class="media">
+          <img src="https://images.unsplash.com/photo-1535223289827-42f1e9919769?auto=format&fit=crop&w=1200&q=80"
+               alt="Adaptive defence"
+               onerror="this.onerror=null;this.src='/static/base_images/captcha.webp';">
+        </div>
+        <div class="card-body">
+          <h3>Adaptive Defence</h3>
+          <p>The system detects abuse patterns and increases challenge difficulty dynamically.</p>
+        </div>
+      </a>
+    </div>
+  </section>
+
+  <div class="cta">
+    <h2>Ready to Secure Your Site?</h2>
+    <p>Integrate Anti-AI CAPTCHA to block bots while letting real users pass easily.</p>
+    <a class="btn" href="/">Try Live Demo</a>
+  </div>
+</main>
+
+<footer>
+  &copy; <span id="year"></span> Anti-AI CAPTCHA — All rights reserved.
+</footer>
+
+<script>
+  document.getElementById('year').textContent = new Date().getFullYear();
+</script>
+</body>
+</html>

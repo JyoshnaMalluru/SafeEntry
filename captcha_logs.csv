@@ -1,0 +1,67 @@
+type,label,choice,correct
+audio_visual,beep,ding,0
+audio_visual,beep,pop,0
+audio_visual,beep,beep,1
+handwriting,no bots allowed,no bots allowed,1
+physics,132,400.0,0
+physics,132,381.0,0
+physics,132,248.0,0
+physics,132,163.0,0
+logic_story,carol,carol,1
+physics,142,400.0,0
+physics,142,306.0,0
+physics,142,126.0,1
+physics,142,127.0,1
+physics,228,236.0,1
+logic_story,drawer,"under a box,",0
+logic_story,drawer,drawer,1
+logic_story,stones,stones,1
+emotion,happy,happy,1
+emotion,angry,angry,1
+emotion,sad,sad,1
+handwriting,stay real,stay real,1
+handwriting,human only,human only,1
+handwriting,no bots allowed,no bots allowed,1
+physics,299,326.0,0
+physics,299,325.0,0
+physics,220,226.0,1
+handwriting,no bots allowed,no bots allowed,1
+handwriting,stay real,stay real,1
+logic_story,stones,stones,1
+logic_story,stones,stones,1
+logic_story,stones,stones,1
+physics,248,261.0,1
+physics,248,0.0,0
+emotion,angry,angry,1
+audio_visual,ding,ding,1
+physics,99,71.0,0
+physics,99,0.0,0
+physics,99,0.0,0
+physics,238,71.0,0
+physics,238,0.0,0
+physics,238,0.0,0
+physics,238,0.0,0
+physics,238,0.0,0
+physics,238,0.0,0
+physics,238,0.0,0
+physics,238,0.0,0
+physics,238,0.0,0
+physics,238,0.0,0
+physics,238,0.0,0
+emotion,sad,sad,1
+handwriting,human only,human only,1
+handwriting,human only,human only,1
+handwriting,human only,human only,1
+emotion,angry,angry,1
+logic_story,stones,stones,1
+physics,228,226.0,1
+physics,228,226.0,1
+physics,228,226.0,1
+physics,228,226.0,1
+physics,228,226.0,1
+physics,228,226.0,1
+physics,228,226.0,1
+physics,228,226.0,1
+physics,127,0.0,0
+physics,243,0.0,0
+handwriting,human only,human only,1
